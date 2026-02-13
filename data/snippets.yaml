@@ -1,0 +1,28 @@
+# ╔══════════════════════════════════════════════════════════════╗
+# ║  DFCA — Don't Forget Commands Again                        ║
+# ║  Add your commands below following this structure           ║
+# ╚══════════════════════════════════════════════════════════════╝
+
+- category: docker
+  name: Shell into container
+  command: "docker exec -it {{container_id}} /bin/bash"
+  description: "Open an interactive bash shell inside a running container"
+  tags: [docker, exec, bash]
+
+- category: git
+  name: Undo last commit (soft)
+  command: "git reset --soft HEAD~1"
+  description: "Undo the last commit but keep changes staged"
+  tags: [git, undo, reset]
+
+- category: network
+  name: Check port usage
+  command: "netstat -ano | findstr :{{port}}"
+  description: "Check which process is using a specific port (Windows)"
+  tags: [network, port, windows]
+
+- category: files
+  name: Find large files
+  command: "Get-ChildItem -Recurse | Sort-Object Length -Descending | Select-Object Name, @{Name='Size(MB)';Expression={'{0:N2}' -f ($_.Length / 1MB)}} -First 10"
+  description: "Find the top 10 largest files in the current directory (PowerShell)"
+  tags: [powershell, files, disk]
